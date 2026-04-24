@@ -2,8 +2,6 @@
 
 API REST de processamento de pagamentos construída com **FastAPI**, **PostgreSQL** e **AWS S3** para armazenamento de comprovantes.
 
-Tem um readme em inglês a cima.
-
 > Projeto de portfólio para demonstrar habilidades de desenvolvimento backend em Python.
 
 ---

@@ -2,8 +2,6 @@
 
 A simplified payment processing REST API built with **FastAPI**, **PostgreSQL** and **AWS S3** for receipt storage.
 
-There is a readme file in pt-br below.
-
 > Built as a portfolio project to demonstrate backend skills in Python.
 
 ---
