@@ -5,7 +5,7 @@ Defines the 'payments' table schema using SQLAlchemy ORM.
 """
 
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import Column, String, Float, DateTime, Enum
 from sqlalchemy.dialects.postgresql import UUID
 import enum
@@ -54,5 +54,5 @@ class Payment(Base):
     payer_name = Column(String(100), nullable=False)
     payer_email = Column(String(100), nullable=False)
     receipt_url = Column(String(500), nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc), nullable=False)
