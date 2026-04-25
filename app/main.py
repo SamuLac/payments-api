@@ -11,12 +11,18 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import payments, receipts
 from app.database import engine, Base
+from contextlib import asynccontextmanager
 
-# Create all tables on startup
-Base.metadata.create_all(bind=engine)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Roda ao iniciar a aplicação
+    Base.metadata.create_all(bind=engine)
+    yield
+    # Roda ao encerrar (cleanup se necessário)
 
 app = FastAPI(
     title="Payments API",
+    lifespan=lifespan,
     description="""
 ## Payments API
 
